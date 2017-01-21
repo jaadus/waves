@@ -81,6 +81,9 @@ MyGame = ig.Game.extend({
 		ig.input.bind( ig.KEY.SPACE, 'jump' );
 		ig.input.bind( ig.KEY.RIGHT_ARROW, 'moveRight');
 		ig.input.bind( ig.KEY.LEFT_ARROW, 'moveLeft');
+		ig.input.bind( ig.KEY.W, 'jump' );
+		ig.input.bind( ig.KEY.D, 'moveRight');
+		ig.input.bind( ig.KEY.A, 'moveLeft');
 	},
 
 	update: function() {
