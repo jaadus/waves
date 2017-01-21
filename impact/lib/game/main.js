@@ -16,8 +16,8 @@ MyGame = ig.Game.extend({
 	// Load a font
 	font: new ig.Font( 'media/04b03.font.png' ),
 
-
 	init: function() {
+		ig.net.login();
 		// Initialize your game here; bind keys etc.
 	},
 

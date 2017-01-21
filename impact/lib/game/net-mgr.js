@@ -26,11 +26,10 @@ NetMgr = ig.Class.extend({
 	peerId: '',
 	hostId: '',
 
-	server: { host: '73.162.188.20', port: 1701 },
 	connections: {},
 
-	login: function( name ) {
-		this.peer = new Peer(name, this.server);
+	login: function() {
+		this.peer = new Peer({ key: 'o4tqsqdmkwamunmi' });
 		this.peer.on('open', function(id) {
 			this.peerId = id;
 			console.log('My peer ID is: ' + id);
