@@ -43,16 +43,23 @@ EntityPlayer = EntityNetBase.extend({
 	},
 
 	handleInput: function() {
-
 		if(ig.input.pressed('jump') && this.standing) {
 		    this.vel.y = -this.jumpHeight;
+		    this.currentAnim = this.anims.idle;
 		}
-
 		if(ig.input.state('moveLeft')) {
 		    this.vel.x = -this.speed;
+		    this.currentAnim = this.anims.run;
+		    this.currentAnim.flip.x = true;
 		} else if(ig.input.state('moveRight')) {
 		    this.vel.x = this.speed;
+		    this.currentAnim = this.anims.run;
+		    this.currentAnim.flip.x = false;
 		} else {
+			if(this.vel.x != 0) {
+				this.currentAnim = this.anims.idle;
+				this.currentAnim.flip.x = this.vel.x > 0 ? false : true;
+			}
 			this.vel.x = 0;
 		}
 	},
