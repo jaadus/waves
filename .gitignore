@@ -1,5 +1,9 @@
 # Ignore
-impact/
+impact/lib/impact
+impact/lib/weltmeister
+impact/tools
+impact/README.md
+impact/weltmeister.html
 .DS_Store
 
 # Allow
