@@ -81,6 +81,7 @@ MyGame = ig.Game.extend({
 	bindKeys: function() {
 		ig.input.bind( ig.KEY.UP_ARROW, 'jump' );
 		ig.input.bind( ig.KEY.SPACE, 'jump' );
+		//ig.input.bind( ig.KEY.SPACE, 'openDoor' );
 		ig.input.bind( ig.KEY.RIGHT_ARROW, 'moveRight');
 		ig.input.bind( ig.KEY.LEFT_ARROW, 'moveLeft');
 		ig.input.bind( ig.KEY.W, 'jump' );
