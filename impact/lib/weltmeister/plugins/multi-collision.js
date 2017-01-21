@@ -924,5 +924,14 @@ ig.module(
 				data: this.data
 			};
 		},
+
+		setTileset: function( tileset ) {
+			if( this.name == 'collision_1' || this.name == 'collision_2' ) {
+				this.setCollisionTileset();
+			}
+			else {
+				this.parent( tileset );
+			}
+		},
 	});
 });
