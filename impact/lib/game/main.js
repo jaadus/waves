@@ -23,8 +23,6 @@ MyGame = ig.Game.extend({
 	isPlayerOne: true,
 
 	init: function() {
-		ig.net.login();
-
 		// Initialize your game here; bind keys etc.
 
 		this.loadLevel( LevelTest );
@@ -89,10 +87,5 @@ MyGame = ig.Game.extend({
 		this.parent();
 	}
 });
-
-
-// Start the Game with 60fps, a resolution of 320x240, scaled
-// up by a factor of 2
-ig.main( '#canvas', MyGame, 60, 400, 300, 2 );
 
 });
