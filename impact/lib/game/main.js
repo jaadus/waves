@@ -24,6 +24,7 @@ MyGame = ig.Game.extend({
 
 	init: function() {
 		// Initialize your game here; bind keys etc.
+		this.bindKeys();
 
 		this.loadLevel( LevelTest );
 	},
@@ -73,6 +74,13 @@ MyGame = ig.Game.extend({
 		for( var i = 0; i < this.entities.length; i++ ) {
 			this.entities[i].ready();
 		}
+	},
+
+	bindKeys: function() {
+		ig.input.bind( ig.KEY.UP_ARROW, 'jump' );
+		ig.input.bind( ig.KEY.SPACE, 'jump' );
+		ig.input.bind( ig.KEY.RIGHT_ARROW, 'moveRight');
+		ig.input.bind( ig.KEY.LEFT_ARROW, 'moveLeft');
 	},
 
 	update: function() {
