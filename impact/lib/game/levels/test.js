@@ -6,7 +6,19 @@ LevelTest=/*JSON[*/{
 		{
 			"type": "EntityPlayer",
 			"x": 104,
-			"y": 188
+			"y": 188,
+			"settings": {
+				"isPlayerOne":true
+			}
+		},
+		{
+			"type": "EntityPlayer",
+			"x": 184,
+			"y": 188,
+			"settings": {
+				"isPlayerOne":false,
+				"size": {"x": 32, "y": 32}
+			}
 		}
 	],
 	"layer": [

@@ -25,10 +25,10 @@ EntityPlayer = EntityNetBase.extend({
 	maxVel: {x: 200, y: 200},
 
 	init: function( x, y, settings ) {
-		this.addAnim( 'idle', 0, [0], true );
-		this.addAnim( 'run', 0.125, [1,2,3,4], false );
 
 		this.parent( x, y, settings );
+
+		this._initAnimations();
 	},
 
 	update: function() {
@@ -37,12 +37,12 @@ EntityPlayer = EntityNetBase.extend({
 			return;
 		}
 
-		this.handleInput();
+		this._handleInput();
 
 		this.parent();
 	},
 
-	handleInput: function() {
+	_handleInput: function() {
 		if(ig.input.pressed('jump') && this.standing) {
 		    this.vel.y = -this.jumpHeight;
 		    this.currentAnim = this.anims.idle;
@@ -61,6 +61,17 @@ EntityPlayer = EntityNetBase.extend({
 				this.currentAnim.flip.x = this.vel.x > 0 ? false : true;
 			}
 			this.vel.x = 0;
+		}
+	},
+
+	_initAnimations: function() {
+		if(this.isPlayerOne) {
+			this.addAnim( 'idle', 0, [0], true );
+			this.addAnim( 'run', 0.125, [1,2,3,4], false );
+		} else {
+			this.animSheet = new ig.AnimationSheet( 'media/player_2.png', this.size.x, this.size.y )
+			this.addAnim( 'idle', 0, [0], true );
+			this.addAnim( 'run', 0.125, [1,2,3,5,6], false );
 		}
 	},
 
