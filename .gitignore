@@ -1,4 +1,7 @@
-impact/tools
-impact/lib/impact
-impact/lib/weltmeister
+# Ignore
+impact/
 .DS_Store
+
+# Allow
+!impact/lib/game/
+!impact/media/
