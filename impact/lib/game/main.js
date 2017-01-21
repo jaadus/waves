@@ -94,6 +94,8 @@ MyGame = ig.Game.extend({
 		// Draw all entities and backgroundMaps
 		this.parent();
 	}
+
+	ig.main( '#canvas', MyGame, 60, 400, 300, 2 );
 });
 
 });
