@@ -93,6 +93,17 @@ MyGame = ig.Game.extend({
 	draw: function() {
 		// Draw all entities and backgroundMaps
 		this.parent();
+	},
+
+	getEntityById: function( id ) {
+		for( var i = 0; i < this.entities.length; i++ ) {
+			var ent = this.entities[i];
+			if( ent.id == id && !ent._killed ) {
+				return ent;
+			}
+		}
+
+		return null;
 	}
 });
 
