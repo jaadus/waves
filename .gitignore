@@ -9,3 +9,4 @@ impact/weltmeister.html
 # Allow
 !impact/lib/game/
 !impact/media/
+!impact/lib/weltmeister/plugins

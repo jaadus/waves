@@ -10,6 +10,8 @@ EntityPlayer = EntityNetBase.extend({
 	animSheet: new ig.AnimationSheet( 'media/player_1.png', 16, 16 ),
 	size: {x: 16, y: 16},
 
+	isPlayerOne: true,
+
 	syncRate: 0.25,
 
 	_wmIgnore: false,
@@ -22,6 +24,13 @@ EntityPlayer = EntityNetBase.extend({
 	},
 
 	update: function() {
+		if( this.isPlayerOne != ig.game.isPlayerOne ) {
+			this.parent();
+			return;
+		}
+
+		// TODO: Add movement logic here
+
 		this.parent();
 	},
 
