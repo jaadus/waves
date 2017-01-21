@@ -5,6 +5,7 @@ impact/tools
 impact/README.md
 impact/weltmeister.html
 .DS_Store
+*.xcf
 
 # Allow
 !impact/lib/game/
