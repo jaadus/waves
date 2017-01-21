@@ -27,6 +27,8 @@ MyGame = ig.Game.extend({
 		this.bindKeys();
 
 		this.loadLevel( LevelTest );
+
+		this.isPlayerOne = ig.net.isHost();
 	},
 
 	loadLevel: function( data ) {
@@ -107,5 +109,4 @@ MyGame = ig.Game.extend({
 	}
 });
 
-	ig.main( '#canvas', MyGame, 60, 400, 300, 2 );
 });

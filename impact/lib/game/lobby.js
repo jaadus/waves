@@ -2,6 +2,7 @@ ig.module(
 	'game.lobby'
 )
 .requires(
+	'game.main',
 	'game.net-mgr',
 	'game.util',
 	'game.v2',
@@ -36,8 +37,7 @@ Lobby = ig.Game.extend({
 						this.hostGame();
 					}
 					else if (xhr.status == 200) {
-						console.log(xhr.response);
-						// TODO: Host found, connect!
+						this.connectToHost(xhr.response);
 					}
 				}
 			}.bind(this);
@@ -45,18 +45,50 @@ Lobby = ig.Game.extend({
 			xhr.open('GET', 'http://' + ig.net.getServerAddr() + '/get_available_game', true);
 			xhr.send();
 		}
-		// Update all entities and backgroundMaps
+		else if( this.connectedState == Lobby.ConnectionState.WAITINGFORPARTNER ) {
+			if( Object.size(ig.net.connections) > 0 ) {
+				this.connectedState = Lobby.ConnectionState.CONNECTEDTOPARTNER;
+
+				ig.system.setGame( MyGame );
+			}
+		}
+
+		this.parent();
+	},
+
+	draw: function() {
 		this.parent();
 
-		// Add your own, additional update code here
+		var c_x = ig.system.width / 2,
+			c_y = ig.system.height / 2;
+		switch( this.connectedState ) {
+			case Lobby.ConnectionState.UNCONNECTED:
+				this.font.draw('Connecting to Multiplayer Server', c_x, c_y, ig.Font.ALIGN.CENTER);
+				break;
+			case Lobby.ConnectionState.PEERJSCONNECTED:
+				this.font.draw('Searching for open games', c_x, c_y, ig.Font.ALIGN.CENTER);
+				break;
+			case Lobby.ConnectionState.WAITINGFORPARTNER:
+				if( ig.net.isHost() ) {
+					this.font.draw('Hosting Game... waiting for partner', c_x, c_y, ig.Font.ALIGN.CENTER);
+				} else {
+					this.font.draw('Joining Game... connecting to partner', c_x, c_y, ig.Font.ALIGN.CENTER);
+				}
+				break;
+			case Lobby.ConnectionState.CONNECTEDTOPARTNER:
+				this.font.draw('Connected to partner... starting game.', c_x, c_y, ig.Font.ALIGN.CENTER);
+				break;
+		}
 	},
 
 	hostGame: function() {
+		console.log('Hosting game');
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4) {
 				if (xhr.status == 200) {
-					this.connectedState = Lobby.ConnectionState.SEARCHINGFORPARTNER;
+					ig.net.hostGame();
+					this.connectedState = Lobby.ConnectionState.WAITINGFORPARTNER;
 				}
 				else {
 					console.log('ERROR: Unable to host [' + xhr.status + ']');
@@ -64,23 +96,24 @@ Lobby = ig.Game.extend({
 			}
 		}.bind(this);
 
-		xhr.open('POST', 'http://' + ig.net.getServerAddr() + '/host_game', true);
-		xhr.send({'peerId': ig.net.peerId});
+		xhr.open('GET', 'http://' + ig.net.getServerAddr() + '/host_game/' + ig.net.peerId, true);
+		xhr.send();
 	},
 
-	draw: function() {
-		// Draw all entities and backgroundMaps
-		this.parent();
+	connectToHost: function( hostId ) {
+		console.log('Joining game ' + hostId);
+
+		ig.net.joinGame( hostId );
+
+		this.connectedState = Lobby.ConnectionState.WAITINGFORPARTNER;
 	}
 });
 
 Lobby.ConnectionState = {
 	UNCONNECTED: 0,
-	PEERJSCONNECTED: 1, // State 1 for ANY player
-	WAITINGFORPARTNER: 2, // State 2 for hosts
-	SEARCHINGFORPARTNER: 3, // State 2 for clients
-	CONNECTEDASHOST: 4, // State 3 for hosts
-	CONNECTEDASCLIENT: 5 // State 3 for clients
+	PEERJSCONNECTED: 1,
+	WAITINGFORPARTNER: 2,
+	CONNECTEDTOPARTNER: 3,
 }
 
 // Start the Game with 60fps, a resolution of 320x240, scaled
