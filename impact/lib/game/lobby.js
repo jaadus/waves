@@ -116,8 +116,4 @@ Lobby.ConnectionState = {
 	CONNECTEDTOPARTNER: 3,
 }
 
-// Start the Game with 60fps, a resolution of 320x240, scaled
-// up by a factor of 2
-ig.main( '#canvas', Lobby, 60, 400, 300, 2 );
-
 });
