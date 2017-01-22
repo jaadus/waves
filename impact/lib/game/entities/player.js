@@ -91,14 +91,19 @@ EntityPlayer = EntityNetBase.extend({
 			this.jumpSound = new ig.Sound( 'media/sfx/Player1_Jump.*' );
 			this.waveSound = new ig.Sound( 'media/sfx/Player1_Wave.*' );
 			this.waveOffset = {x: 0, y: -12};
+			this.name = "P1";
+			this.dimension = 1;
 		} else {
-			this.size = {x: 24, y: 24};
-			this.animSheet = new ig.AnimationSheet( 'media/player_2.png', this.size.x, this.size.y );
+			this.size = {x: 16, y: 16};
+			this.offset = {x: 4, y: 8};
+			this.animSheet = new ig.AnimationSheet( 'media/player_2.png', 24, 24 );
 			this.addAnim( 'idle', 0, [0], true );
 			this.addAnim( 'run', 0.125, [1,2,3,2], false );
 			this.jumpSound = new ig.Sound( 'media/sfx/Player2_Jump.*' );
 			this.waveSound = new ig.Sound( 'media/sfx/Player2_Wave.*' );
 			this.waveOffset = {x: 4, y: -10};
+			this.name = "P2";
+			this.dimension = 2;
 		}
 	},
 

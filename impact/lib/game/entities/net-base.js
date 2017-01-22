@@ -7,6 +7,7 @@ ig.module(
 .defines(function(){
 
 EntityNetBase = ig.Entity.extend({
+	dimension: 3,
 	syncRate: 0,
 	timeToUpdate: 0,
 

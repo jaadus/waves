@@ -10,7 +10,10 @@ ig.module(
 
 	'impact.game',
 	'impact.font',
-	'plugins.door-fix' // ENGINE FIX :P
+	'plugins.dimensional-collision',
+	'plugins.door-fix', // ENGINE FIX :P
+
+	'impact.debug.debug'
 )
 .defines(function(){
 

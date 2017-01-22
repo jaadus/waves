@@ -5,12 +5,12 @@ LevelWaves=/*JSON[*/{
 	"entities": [
 		{
 			"type": "EntityDoor",
-			"x": 120,
-			"y": 472
+			"x": 288,
+			"y": 528
 		},
 		{
 			"type": "EntityDoor",
-			"x": 192,
+			"x": 288,
 			"y": 472
 		},
 		{
@@ -29,12 +29,22 @@ LevelWaves=/*JSON[*/{
 			"y": 520
 		},
 		{
+			"type": "EntityDoor",
+			"x": 192,
+			"y": 472
+		},
+		{
 			"type": "EntityPlayer",
-			"x": 24,
-			"y": 576,
+			"x": 40,
+			"y": 564,
 			"settings": {
 				"isPlayerOne": 0
 			}
+		},
+		{
+			"type": "EntityDoor",
+			"x": 120,
+			"y": 472
 		},
 		{
 			"type": "EntityDoor",
@@ -48,16 +58,6 @@ LevelWaves=/*JSON[*/{
 			"settings": {
 				"isPlayerOne": 1
 			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 288,
-			"y": 528
-		},
-		{
-			"type": "EntityDoor",
-			"x": 288,
-			"y": 472
 		},
 		{
 			"type": "EntityDoor",
