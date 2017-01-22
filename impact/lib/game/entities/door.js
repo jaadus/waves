@@ -13,6 +13,7 @@ EntityDoor = EntityNetBase.extend({
 	imageOffset: {x: -7, y: 0},
 	size: {x: 8, y: 32},
 
+	zIndex: -16,
 	gravityFactor: 0,
 	_wmIgnore: false,
 
