@@ -5,17 +5,17 @@ LevelLevel1=/*JSON[*/{
 	"entities": [
 		{
 			"type": "EntityDoor",
-			"x": 240,
-			"y": 960,
+			"x": 576,
+			"y": 1152,
 			"settings": {
-				"dimension": 1,
-				"name": "B3"
+				"dimension": 2,
+				"name": "b2"
 			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 576,
-			"y": 1056,
+			"y": 960,
 			"settings": {
 				"dimension": 2
 			}
@@ -48,11 +48,28 @@ LevelLevel1=/*JSON[*/{
 			}
 		},
 		{
+			"type": "EntityDoor",
+			"x": 576,
+			"y": 1056,
+			"settings": {
+				"dimension": 2
+			}
+		},
+		{
 			"type": "EntityPlayer",
 			"x": 56,
 			"y": 1164,
 			"settings": {
 				"isPlayerOne": 0
+			}
+		},
+		{
+			"type": "EntityDoor",
+			"x": 240,
+			"y": 960,
+			"settings": {
+				"dimension": 1,
+				"name": "B3"
 			}
 		},
 		{
@@ -69,23 +86,6 @@ LevelLevel1=/*JSON[*/{
 			"y": 1164,
 			"settings": {
 				"isPlayerOne": 1
-			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 576,
-			"y": 1152,
-			"settings": {
-				"dimension": 2,
-				"name": "b2"
-			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 576,
-			"y": 960,
-			"settings": {
-				"dimension": 2
 			}
 		},
 		{
@@ -127,7 +127,7 @@ LevelLevel1=/*JSON[*/{
 		{
 			"type": "EntitySwitch",
 			"x": 180,
-			"y": 1060,
+			"y": 1072,
 			"settings": {
 				"dimension": 1,
 				"target": {
@@ -139,7 +139,7 @@ LevelLevel1=/*JSON[*/{
 		{
 			"type": "EntitySwitch",
 			"x": 204,
-			"y": 1160,
+			"y": 1168,
 			"settings": {
 				"dimension": 1,
 				"target": {
@@ -150,7 +150,7 @@ LevelLevel1=/*JSON[*/{
 		{
 			"type": "EntitySwitch",
 			"x": 196,
-			"y": 1160,
+			"y": 1168,
 			"settings": {
 				"dimension": 2,
 				"targets": {
@@ -164,7 +164,7 @@ LevelLevel1=/*JSON[*/{
 		{
 			"type": "EntitySwitch",
 			"x": 148,
-			"y": 1060,
+			"y": 1072,
 			"settings": {
 				"dimension": 2,
 				"target": {
@@ -177,7 +177,7 @@ LevelLevel1=/*JSON[*/{
 		{
 			"type": "EntitySwitch",
 			"x": 436,
-			"y": 1148,
+			"y": 1168,
 			"settings": {
 				"dimension": 2,
 				"target": {
