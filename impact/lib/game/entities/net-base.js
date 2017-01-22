@@ -29,7 +29,23 @@ EntityNetBase = ig.Entity.extend({
 			}
 		}
 
-		this.parent();
+		this.last.x = this.pos.x;
+		this.last.y = this.pos.y;
+		this.vel.y += ig.game.gravity * ig.system.tick * this.gravityFactor;
+
+		this.vel.x = this.getNewVelocity( this.vel.x, this.accel.x, this.friction.x, this.maxVel.x );
+		this.vel.y = this.getNewVelocity( this.vel.y, this.accel.y, this.friction.y, this.maxVel.y );
+
+		// movement & collision
+		var mx = this.vel.x * ig.system.tick;
+		var my = this.vel.y * ig.system.tick;
+		var collMap = ((this.dimension & 1) == 0 ? ig.game.collisionMap_1 : ig.game.collisionMap_2);
+		var res = collMap.trace(this.pos.x, this.pos.y, mx, my, this.size.x, this.size.y);
+		this.handleMovementTrace( res );
+
+		if( this.currentAnim ) {
+			this.currentAnim.update();
+		}
 	},
 
 	sendPacket: function(entmsg) {

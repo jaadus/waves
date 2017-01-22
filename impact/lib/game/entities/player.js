@@ -21,7 +21,7 @@ EntityPlayer = EntityNetBase.extend({
 
 	isPlayerOne: true,
 
-	syncRate: 1.0,
+	syncRate: 0.01,
 
 	_wmIgnore: false,
 

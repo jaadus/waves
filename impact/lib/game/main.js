@@ -26,10 +26,12 @@ MyGame = ig.Game.extend({
 	gravity: 32,
 
 	isPlayerOne: true,
+	collisionMap_1: null,
+	collisionMap_2: null,
 
 	init: function() {
 		this.isPlayerOne = ig.net.isHost();
-		
+
 		this.bindKeys();
 
 		this.loadLevel( LevelWaves );
@@ -50,18 +52,17 @@ MyGame = ig.Game.extend({
 
 		// Map Layer
 		this.collisionMap = ig.CollisionMap.staticNoCollision;
+		this.collisionMap_1 = ig.CollisionMap.staticNoCollision;
+		this.collisionMap_2 = ig.CollisionMap.staticNoCollision;
+
 		this.backgroundMaps = [];
 		for( var i = 0; i < data.layer.length; i++ ) {
 			var ld = data.layer[i];
 			if( ld.name == 'collision_1' ) {
-				if( this.isPlayerOne ) {
-					this.collisionMap = new ig.CollisionMap(ld.tilesize, ld.data );
-				}
+				this.collisionMap_1 = new ig.CollisionMap( ld.tilesize, ld.data );
 			}
 			if( ld.name == 'collision_2' ) {
-				if( !this.isPlayerOne ) {
-					this.collisionMap = new ig.CollisionMap(ld.tilesize, ld.data );
-				}
+				this.collisionMap_2 = new ig.CollisionMap( ld.tilesize, ld.data );
 			}
 			else {
 				if( (this.isPlayerOne && ld.visibleToPlayerOne) || (!this.isPlayerOne && ld.visibleToPlayerTwo) ) {
@@ -81,6 +82,23 @@ MyGame = ig.Game.extend({
 		for( var i = 0; i < this.entities.length; i++ ) {
 			this.entities[i].ready();
 		}
+	},
+
+	getMapByName: function( name ) {
+		if( name == 'collision_1' ) {
+			return this.collisionMap_1;
+		}
+		else if( name == 'collision_2' ) {
+			return this.collisionMap_2;
+		}
+
+		for( var i = 0; i < this.backgroundMaps.length; i++ ) {
+			if( this.backgroundMaps[i].name == name ) {
+				return this.backgroundMaps[i];
+			}
+		}
+
+		return null;
 	},
 
 	sortEntities: function() {
