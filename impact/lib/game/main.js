@@ -33,6 +33,8 @@ MyGame = ig.Game.extend({
 	collisionMap_2: null,
 	victoryImg: new ig.Image( 'media/victory.png' ),
 
+	font: new ig.Font( 'media/04b03.font.png', { fontColor: '#111', borderColor: '#f00', borderSize: 2, letterSpacing: -1 } ),
+
 	init: function() {
 		this.isPlayerOne = ig.net.isHost();
 
@@ -165,6 +167,10 @@ MyGame = ig.Game.extend({
 					this.player.sendPacket({type: 'wave'});
 				}.bind(this), interval);
 			}
+		}
+
+		if( Object.size(ig.net.connections) == 0 ) {
+			this.font.draw('Your partner has left the game', ig.system.width / 2, ig.system.height / 2, ig.Font.ALIGN.CENTER);
 		}
 	},
 
