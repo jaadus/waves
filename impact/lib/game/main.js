@@ -86,6 +86,7 @@ MyGame = ig.Game.extend({
 		ig.input.bind( ig.KEY.W, 'jump' );
 		ig.input.bind( ig.KEY.D, 'moveRight');
 		ig.input.bind( ig.KEY.A, 'moveLeft');
+		ig.input.bind( ig.KEY.Q, 'wave');
 	},
 
 	update: function() {
