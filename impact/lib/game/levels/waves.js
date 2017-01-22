@@ -1,35 +1,55 @@
 ig.module( 'game.levels.waves' )
-.requires( 'impact.image','game.entities.player','game.entities.door','game.entities.switch' )
+.requires( 'impact.image','game.entities.door','game.entities.player','game.entities.switch' )
 .defines(function(){
 LevelWaves=/*JSON[*/{
 	"entities": [
 		{
-			"type": "EntityPlayer",
-			"x": 20,
+			"type": "EntityDoor",
+			"x": 288,
+			"y": 520,
+			"settings": {
+				"dimension": 2
+			}
+		},
+		{
+			"type": "EntityDoor",
+			"x": 288,
 			"y": 568,
 			"settings": {
-				"isPlayerOne": 0
+				"dimension": 2
 			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 120,
-			"y": 472
-		},
-		{
-			"type": "EntityDoor",
-			"x": 120,
-			"y": 568
+			"y": 568,
+			"settings": {
+				"dimension": 1
+			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 96,
-			"y": 520
+			"y": 520,
+			"settings": {
+				"dimension": 2
+			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 216,
-			"y": 520
+			"y": 520,
+			"settings": {
+				"dimension": 2
+			}
+		},
+		{
+			"type": "EntityDoor",
+			"x": 120,
+			"y": 472,
+			"settings": {
+				"dimension": 1
+			}
 		},
 		{
 			"type": "EntityPlayer",
@@ -40,69 +60,100 @@ LevelWaves=/*JSON[*/{
 			}
 		},
 		{
-			"type": "EntityDoor",
-			"x": 288,
-			"y": 472
+			"type": "EntityPlayer",
+			"x": 20,
+			"y": 568,
+			"settings": {
+				"isPlayerOne": 0
+			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 288,
-			"y": 568
+			"y": 472,
+			"settings": {
+				"dimension": 2
+			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 192,
-			"y": 472
-		},
-		{
-			"type": "EntityDoor",
-			"x": 288,
-			"y": 528
+			"y": 472,
+			"settings": {
+				"dimension": 1
+			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 72,
-			"y": 568
+			"y": 568,
+			"settings": {
+				"dimension": 1
+			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 120,
-			"y": 520
+			"y": 520,
+			"settings": {
+				"dimension": 1
+			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 120,
-			"y": 568
+			"y": 568,
+			"settings": {
+				"dimension": 2
+			}
 		},
 		{
 			"type": "EntityDoor",
 			"x": 192,
-			"y": 568
+			"y": 568,
+			"settings": {
+				"dimension": 1
+			}
 		},
 		{
 			"type": "EntitySwitch",
 			"x": 80,
-			"y": 528
+			"y": 528,
+			"settings": {
+				"dimension": 1
+			}
 		},
 		{
 			"type": "EntitySwitch",
 			"x": 96,
-			"y": 576
+			"y": 576,
+			"settings": {
+				"dimension": 1
+			}
 		},
 		{
 			"type": "EntitySwitch",
 			"x": 96,
-			"y": 576
+			"y": 576,
+			"settings": {
+				"dimension": 2
+			}
 		},
 		{
 			"type": "EntitySwitch",
 			"x": 72,
-			"y": 528
+			"y": 528,
+			"settings": {
+				"dimension": 2
+			}
 		},
 		{
 			"type": "EntitySwitch",
 			"x": 216,
-			"y": 576
+			"y": 576,
+			"settings": {
+				"dimension": 2
+			}
 		}
 	],
 	"layer": [
@@ -114,7 +165,7 @@ LevelWaves=/*JSON[*/{
 			"linkWithCollision_2": true,
 			"visibleToPlayerOne": false,
 			"visibleToPlayerTwo": true,
-			"visible": 0,
+			"visible": 1,
 			"tilesetName": "media/outdoors.png",
 			"repeat": false,
 			"preRender": false,
@@ -194,7 +245,7 @@ LevelWaves=/*JSON[*/{
 				[42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,43,0,0,0,0,0,0,0,0,73,0,0,0,0,0,0,0,0,0,0,0,138,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				[42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,43,0,0,0,0,0,0,0,0,73,0,0,0,0,0,0,0,0,0,0,0,138,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				[42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,98,98,0,0,0,73,0,0,0,0,0,0,7,148,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-				[42,0,0,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,73,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				[42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				[25,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,99,99,99,99,99,99,99,99,99,99,99,99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 			]
@@ -300,7 +351,7 @@ LevelWaves=/*JSON[*/{
 			"linkWithCollision_2": false,
 			"visibleToPlayerOne": true,
 			"visibleToPlayerTwo": false,
-			"visible": 1,
+			"visible": 0,
 			"tilesetName": "media/outdoors.png",
 			"repeat": false,
 			"preRender": false,

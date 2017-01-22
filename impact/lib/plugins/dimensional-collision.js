@@ -9,7 +9,7 @@ ig.module(
 		draw: function() {
 			if (this.dimension != undefined) {
 				var playerDimension = ig.game.getEntityByName(ig.game.isPlayerOne ? "P1" : "P2").dimension;
-				if( !this instanceof EntityPlayer && (this.dimension & playerDimension) == 0 ) {
+				if( !(this instanceof EntityPlayer) && (this.dimension & playerDimension) == 0 ) {
 					return;
 				}
 			}
