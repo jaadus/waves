@@ -1,16 +1,19 @@
 ig.module( 'game.levels.waves' )
-.requires( 'impact.image','game.entities.door','game.entities.player','game.entities.switch' )
+.requires( 'impact.image','game.entities.player','game.entities.door','game.entities.switch' )
 .defines(function(){
 LevelWaves=/*JSON[*/{
 	"entities": [
 		{
-			"type": "EntityDoor",
-			"x": 288,
-			"y": 528
+			"type": "EntityPlayer",
+			"x": 20,
+			"y": 568,
+			"settings": {
+				"isPlayerOne": 0
+			}
 		},
 		{
 			"type": "EntityDoor",
-			"x": 288,
+			"x": 120,
 			"y": 472
 		},
 		{
@@ -29,21 +32,16 @@ LevelWaves=/*JSON[*/{
 			"y": 520
 		},
 		{
-			"type": "EntityDoor",
-			"x": 192,
-			"y": 472
-		},
-		{
 			"type": "EntityPlayer",
-			"x": 40,
-			"y": 564,
+			"x": 16,
+			"y": 576,
 			"settings": {
-				"isPlayerOne": 0
+				"isPlayerOne": 1
 			}
 		},
 		{
 			"type": "EntityDoor",
-			"x": 120,
+			"x": 288,
 			"y": 472
 		},
 		{
@@ -52,12 +50,14 @@ LevelWaves=/*JSON[*/{
 			"y": 568
 		},
 		{
-			"type": "EntityPlayer",
-			"x": 16,
-			"y": 576,
-			"settings": {
-				"isPlayerOne": 1
-			}
+			"type": "EntityDoor",
+			"x": 192,
+			"y": 472
+		},
+		{
+			"type": "EntityDoor",
+			"x": 288,
+			"y": 528
 		},
 		{
 			"type": "EntityDoor",

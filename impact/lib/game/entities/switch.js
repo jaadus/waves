@@ -15,6 +15,8 @@ EntitySwitch = EntityNetBase.extend({
 	gravityFactor: 0,
 	on: false,
 
+	_wmIgnore: false,
+
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
 		this._populateTargetDoorNames(settings.targets);

@@ -12,6 +12,8 @@ EntityDoor = EntityNetBase.extend({
 	closed: true,
 	size: {x:8, y: 24},
 
+	_wmIgnore: false,
+
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
 		this.addAnim( 'open', 0.125, [15], false );
