@@ -2,7 +2,8 @@ ig.module(
 	'game.entities.player'
 )
 .requires(
-	'game.entities.net-base'
+	'game.entities.net-base',
+	'game.entities.dust-particle'
 )
 .defines(function(){
 
@@ -32,6 +33,10 @@ EntityPlayer = EntityNetBase.extend({
 	waveSound: null,
 	waveOffset: null,
 	waveHeight: 75,
+
+	landingSound: new ig.Sound( 'media/sfx/Player_Landing.*' ),
+	hardLandingVel: 150,
+	makeLandingSound: false,
 
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
@@ -137,11 +142,21 @@ EntityPlayer = EntityNetBase.extend({
 			this.vel.x = 0;
 		}
 		this.currentAnim.flip.x = !this.facingRight;
+
+		if( this.vel.y > this.hardLandingVel ) {
+			this.makeLandingSound = true;
+		}
+
+		if( this.makeLandingSound && this.vel.y <= 0 ) {
+			this.landingSound.play();
+			this.makeLandingSound = false;
+
+			ig.game.spawnEntity( EntityDustParticle, this.pos.x, this.pos.y + this.size.y - 8, {} );
+		}
 	},
 	_handleUse: function() {
 		var theSwitch = this._getClosestSwitch();
 		if(theSwitch) {
-			console.log('togglin')
 			theSwitch.toggle();
 		}
 	},
