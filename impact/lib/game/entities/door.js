@@ -7,20 +7,22 @@ ig.module(
 .defines(function(){
 
 EntityDoor = EntityNetBase.extend({
-	//animSheet: new ig.AnimationSheet( 'media/doors.png', 16, 2 ),
-	animSheet: new ig.AnimationSheet( 'media/outdoors.png', 2, 16 ),
+	openImg: new ig.Image( 'media/door_open.png' ),
+	closeImg: new ig.Image( 'media/door_closed.png' ),
 	closed: true,
-	size: {x:8, y: 24},
+	imageOffset: {x: -8, y: 0},
+	size: {x: 8, y:20},
 
 	_wmIgnore: false,
 
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
-		this.addAnim( 'open', 0.125, [15], false );
+		this.closeImg.height = this.openImg.height = 24;
 		this.gravityFactor = 0;
+			console.log(ig.game)
 	},
 	update: function() {
-		this.currentAnim = this.anims.open;
+		this.currentAnim = this.anims.close;
 		this.collides = this.closed ? ig.Entity.COLLIDES.FIXED : ig.Entity.COLLIDES.NEVER;
 		this.parent();
 	},
@@ -29,6 +31,20 @@ EntityDoor = EntityNetBase.extend({
 	},
 	close: function() {
 		this.closed = true;
+	},
+	draw: function() {
+
+		if((ig.game.isPlayerOne && this.dimension == 2)
+			|| (!ig.game.isPlayerOne && this.dimension == 1)) {
+				return;
+		}
+
+		var img = this.closed ? this.closeImg : this.openImg;
+
+		img.draw(this.pos.x + this.imageOffset.x - ig.game.screen.x,
+			this.pos.y + this.imageOffset.y - ig.game.screen.y);
+
+		this.parent();
 	},
 	toggle: function() {
 		this.closed = !this.closed;
