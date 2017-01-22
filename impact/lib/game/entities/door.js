@@ -19,7 +19,6 @@ EntityDoor = EntityNetBase.extend({
 		this.parent( x, y, settings );
 		this.closeImg.height = this.openImg.height = 24;
 		this.gravityFactor = 0;
-			console.log(ig.game)
 	},
 	update: function() {
 		this.currentAnim = this.anims.close;
