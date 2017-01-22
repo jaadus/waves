@@ -33,6 +33,7 @@ MyGame = ig.Game.extend({
 	isPlayerOne: true,
 	collisionMap_1: null,
 	collisionMap_2: null,
+	victoryImg: new ig.Image( 'media/victory.png' ),
 
 	init: function() {
 		this.isPlayerOne = ig.net.isHost();
@@ -93,7 +94,7 @@ MyGame = ig.Game.extend({
 		if(this.levels[this.currLevel]) {
 			this.loadLevel(this.levels[this.currLevel]);
 		} else {
-			//Game end
+			this.gameOver = true;
 		}
 	},
 	getMapByName: function( name ) {
@@ -142,7 +143,7 @@ MyGame = ig.Game.extend({
 
 		// Add your own, additional update code here
 		var playerNumber = this.isPlayerOne ? 1 : 2;
-		var player = this.getEntityByName('P'+playerNumber);
+		var player = this.player = this.getEntityByName('P'+playerNumber);
 		if (player) {
 			this.screen.x = player.pos.x - ig.system.width / 2;
 			this.screen.y = player.pos.y - ig.system.height / 2;
@@ -152,6 +153,19 @@ MyGame = ig.Game.extend({
 	draw: function() {
 		// Draw all entities and backgroundMaps
 		this.parent();
+
+		if(this.gameOver) {
+			this.victoryImg.draw(25, 20);
+			//Do we want this?
+			/*if(!this.playersCelebrating) {
+				this.playersCelebrating = true;
+				this.player.sendPacket({type: 'wave'});
+				var interval = 2000;
+				setInterval(function() {
+					this.player.sendPacket({type: 'wave'});
+				}.bind(this), interval);
+			}*/
+		}
 	},
 
 	getEntityById: function( id ) {
