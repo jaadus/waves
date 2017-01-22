@@ -16,9 +16,7 @@ ig.module(
 	'impact.font',
 	'plugins.font2',
 	'plugins.dimensional-collision',
-	'plugins.door-fix', // ENGINE FIX :P
-
-	'impact.debug.debug'
+	'plugins.door-fix' // ENGINE FIX :P
 )
 .defines(function(){
 
