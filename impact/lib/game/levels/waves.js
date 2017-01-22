@@ -1,8 +1,46 @@
 ig.module( 'game.levels.waves' )
-.requires( 'impact.image','game.entities.player' )
+.requires( 'impact.image','game.entities.door','game.entities.player','game.entities.switch' )
 .defines(function(){
 LevelWaves=/*JSON[*/{
 	"entities": [
+		{
+			"type": "EntityDoor",
+			"x": 120,
+			"y": 472
+		},
+		{
+			"type": "EntityDoor",
+			"x": 192,
+			"y": 472
+		},
+		{
+			"type": "EntityDoor",
+			"x": 120,
+			"y": 568
+		},
+		{
+			"type": "EntityDoor",
+			"x": 96,
+			"y": 520
+		},
+		{
+			"type": "EntityDoor",
+			"x": 216,
+			"y": 520
+		},
+		{
+			"type": "EntityPlayer",
+			"x": 24,
+			"y": 576,
+			"settings": {
+				"isPlayerOne": 0
+			}
+		},
+		{
+			"type": "EntityDoor",
+			"x": 288,
+			"y": 568
+		},
 		{
 			"type": "EntityPlayer",
 			"x": 16,
@@ -12,17 +50,59 @@ LevelWaves=/*JSON[*/{
 			}
 		},
 		{
-			"type": "EntityPlayer",
-			"x": 776,
-			"y": 348
+			"type": "EntityDoor",
+			"x": 288,
+			"y": 528
 		},
 		{
-			"type": "EntityPlayer",
-			"x": 20,
-			"y": 576,
-			"settings": {
-				"isPlayerOne": 0
-			}
+			"type": "EntityDoor",
+			"x": 288,
+			"y": 472
+		},
+		{
+			"type": "EntityDoor",
+			"x": 72,
+			"y": 568
+		},
+		{
+			"type": "EntityDoor",
+			"x": 120,
+			"y": 520
+		},
+		{
+			"type": "EntityDoor",
+			"x": 120,
+			"y": 568
+		},
+		{
+			"type": "EntityDoor",
+			"x": 192,
+			"y": 568
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 80,
+			"y": 528
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 96,
+			"y": 576
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 96,
+			"y": 576
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 72,
+			"y": 528
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 216,
+			"y": 576
 		}
 	],
 	"layer": [
@@ -34,7 +114,7 @@ LevelWaves=/*JSON[*/{
 			"linkWithCollision_2": true,
 			"visibleToPlayerOne": false,
 			"visibleToPlayerTwo": true,
-			"visible": 1,
+			"visible": 0,
 			"tilesetName": "media/outdoors.png",
 			"repeat": false,
 			"preRender": false,
@@ -220,7 +300,7 @@ LevelWaves=/*JSON[*/{
 			"linkWithCollision_2": false,
 			"visibleToPlayerOne": true,
 			"visibleToPlayerTwo": false,
-			"visible": 0,
+			"visible": 1,
 			"tilesetName": "media/outdoors.png",
 			"repeat": false,
 			"preRender": false,
