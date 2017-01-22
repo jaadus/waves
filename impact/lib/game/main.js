@@ -44,6 +44,7 @@ MyGame = ig.Game.extend({
 	},
 
 	loadLevel: function( data ) {
+		ig.Entity._lastId = 0;
 		this.screen = {x: 0, y: 0};
 
 		// Entities
