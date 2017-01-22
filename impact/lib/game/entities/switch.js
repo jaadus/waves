@@ -19,7 +19,7 @@ EntitySwitch = EntityNetBase.extend({
 
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
-		this._populateTargetDoorNames(settings.targets);
+		this._populateTargetDoorNames(settings.target);
 		this.addAnim( 'open', 0.125, [1], false );
 	},
 	update: function() {
