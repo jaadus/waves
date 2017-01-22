@@ -21,9 +21,7 @@ ig.module(
 .defines(function(){
 
 MyGame = ig.Game.extend({
-
-	clearColor: '#6495ED',
-
+	clearColor: undefined,
 	gravity: 32,
 	levels: [LevelLevel1, LevelLevel2],
 	currLevel: 0,
@@ -32,6 +30,7 @@ MyGame = ig.Game.extend({
 	collisionMap_1: null,
 	collisionMap_2: null,
 	victoryImg: new ig.Image( 'media/victory.png' ),
+	bgImg: new ig.Image( 'media/bg.png' ),
 
 	font: new ig.Font( 'media/04b03.font.png', { fontColor: '#111', borderColor: '#f00', borderSize: 2, letterSpacing: -1 } ),
 
@@ -152,6 +151,8 @@ MyGame = ig.Game.extend({
 	},
 
 	draw: function() {
+		this.bgImg.draw(0, 0);
+
 		// Draw all entities and backgroundMaps
 		this.parent();
 
