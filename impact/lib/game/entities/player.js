@@ -91,7 +91,6 @@ EntityPlayer = EntityNetBase.extend({
 		}
 		if( ig.input.pressed('use') ) {
 			this._handleUse();
-			this.sendPacket({type: 'use'});
 		}
 	},
 

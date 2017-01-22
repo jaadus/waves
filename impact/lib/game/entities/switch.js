@@ -36,7 +36,7 @@ EntitySwitch = EntityNetBase.extend({
 		this.on = !this.on;
 		this.targetNames.forEach(function(name) {
 			ig.game.getEntityByName(name).toggle();
-		});
+		}.bind(this));
 	}
 });
 

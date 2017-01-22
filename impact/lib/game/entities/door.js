@@ -46,7 +46,11 @@ EntityDoor = EntityNetBase.extend({
 		this.parent();
 	},
 	toggle: function() {
+		this.sendPacket({type: 'toggle'});
+	},
+	processPacket: function(msg) {
 		this.closed = !this.closed;
+		this.parent(msg);
 	}
 });
 
