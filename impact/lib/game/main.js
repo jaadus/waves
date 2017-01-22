@@ -6,7 +6,7 @@ ig.module(
 	'game.util',
 	'game.v2',
 
-	'game.levels.waves',
+	'game.levels.level1',
 	'game.entities.switch',
 
 	'impact.game',
@@ -34,7 +34,7 @@ MyGame = ig.Game.extend({
 
 		this.bindKeys();
 
-		this.loadLevel( LevelWaves );
+		this.loadLevel( LevelLevel1 );
 	},
 
 	loadLevel: function( data ) {

@@ -1,22 +1,23 @@
-ig.module( 'game.levels.waves' )
-.requires( 'impact.image','game.entities.player','game.entities.door','game.entities.switch' )
+ig.module( 'game.levels.level1' )
+.requires( 'impact.image','game.entities.door','game.entities.player','game.entities.switch' )
 .defines(function(){
-LevelWaves=/*JSON[*/{
+LevelLevel1=/*JSON[*/{
 	"entities": [
 		{
-			"type": "EntityPlayer",
-			"x": 28,
-			"y": 1164,
+			"type": "EntityDoor",
+			"x": 240,
+			"y": 960,
 			"settings": {
-				"isPlayerOne": 1
+				"dimension": 1,
+				"name": "B3"
 			}
 		},
 		{
-			"type": "EntityPlayer",
-			"x": 56,
-			"y": 1164,
+			"type": "EntityDoor",
+			"x": 576,
+			"y": 1056,
 			"settings": {
-				"isPlayerOne": 0
+				"dimension": 2
 			}
 		},
 		{
@@ -47,11 +48,27 @@ LevelWaves=/*JSON[*/{
 			}
 		},
 		{
+			"type": "EntityPlayer",
+			"x": 56,
+			"y": 1164,
+			"settings": {
+				"isPlayerOne": 0
+			}
+		},
+		{
 			"type": "EntityDoor",
 			"x": 384,
 			"y": 960,
 			"settings": {
 				"dimension": 1
+			}
+		},
+		{
+			"type": "EntityPlayer",
+			"x": 28,
+			"y": 1164,
+			"settings": {
+				"isPlayerOne": 1
 			}
 		},
 		{
@@ -67,23 +84,6 @@ LevelWaves=/*JSON[*/{
 			"type": "EntityDoor",
 			"x": 576,
 			"y": 960,
-			"settings": {
-				"dimension": 2
-			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 240,
-			"y": 960,
-			"settings": {
-				"dimension": 1,
-				"name": "B3"
-			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 576,
-			"y": 1056,
 			"settings": {
 				"dimension": 2
 			}
@@ -561,5 +561,5 @@ LevelWaves=/*JSON[*/{
 		}
 	]
 }/*]JSON*/;
-LevelWavesResources=[new ig.Image('media/outdoors.png'), new ig.Image('media/outdoors.png')];
+LevelLevel1Resources=[new ig.Image('media/outdoors.png'), new ig.Image('media/outdoors.png')];
 });
