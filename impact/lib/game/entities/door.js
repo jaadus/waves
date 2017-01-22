@@ -2,11 +2,11 @@ ig.module(
 	'game.entities.door'
 )
 .requires(
-	'impact.entity'
+	'game.entities.net-base'
 )
 .defines(function(){
 
-EntityDoor = ig.Entity.extend({
+EntityDoor = EntityNetBase.extend({
 	//animSheet: new ig.AnimationSheet( 'media/doors.png', 16, 2 ),
 	animSheet: new ig.AnimationSheet( 'media/outdoors.png', 2, 16 ),
 	closed: true,

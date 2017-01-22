@@ -10,7 +10,7 @@ EntityPlayer = EntityNetBase.extend({
 	animSheet: new ig.AnimationSheet( 'media/player_1.png', 16, 16 ),
 	font: new ig.Font( 'media/04b03.font.png' ),
 	size: {x: 16, y: 16},
-	collides: ig.Entity.COLLIDES.ACTIVE,
+	collides: ig.Entity.COLLIDES.PASSIVE,
 	speed: 80,
 	gravityFactor: 14,
 	jumpHeight: 150,
