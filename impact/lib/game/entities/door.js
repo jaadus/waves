@@ -8,14 +8,14 @@ ig.module(
 
 EntityDoor = ig.Entity.extend({
 	//animSheet: new ig.AnimationSheet( 'media/doors.png', 16, 2 ),
-	animSheet: new ig.AnimationSheet( 'media/player_1.png', 16, 16 ),
+	animSheet: new ig.AnimationSheet( 'media/outdoors.png', 2, 16 ),
 	closed: true,
-	size: {x: 1, y: 16},
+	size: {x:2, y: 16},
 
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
 		this.offset.x = 2;
-		this.addAnim( 'open', 0.125, [1], false );
+		this.addAnim( 'open', 0.125, [15], false );
 	},
 	update: function() {
 		this.currentAnim = this.anims.open;
@@ -29,12 +29,7 @@ EntityDoor = ig.Entity.extend({
 		this.closed = true;
 	},
 	toggle: function() {
-		if(this.closed) {
-			this.open();
-			return;
-		}
-
-		this.close();
+		this.closed = !this.closed;
 	}
 });
 
