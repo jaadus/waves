@@ -27,12 +27,11 @@ MyGame = ig.Game.extend({
 	isPlayerOne: true,
 
 	init: function() {
-		// Initialize your game here; bind keys etc.
+		this.isPlayerOne = ig.net.isHost();
+		
 		this.bindKeys();
 
 		this.loadLevel( LevelWaves );
-
-		this.isPlayerOne = ig.net.isHost();
 	},
 
 	loadLevel: function( data ) {
