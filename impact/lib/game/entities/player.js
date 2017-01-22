@@ -119,6 +119,15 @@ EntityPlayer = EntityNetBase.extend({
 
 	_handleMoveLogic: function() {
 		this.currentAnim = this.anims.idle;
+		this.endDoor = ig.game.getEntityByName('endDoor');
+
+		if (this.endDoor) {
+			if(this.distanceTo(this.endDoor) <= this.useDistance) {
+				ig.game.getEntityByName('endDoor').playerAtDoor(this.isPlayerOne);
+			} else {
+				ig.game.getEntityByName('endDoor').playerNotAtDoor(this.isPlayerOne);
+			}
+		}
 
 		if(this.remoteInputs.jump && this.standing) {
 			this.vel.y = -this.jumpHeight;

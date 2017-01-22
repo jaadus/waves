@@ -7,6 +7,9 @@ ig.module(
 	'game.v2',
 
 	'game.levels.level1',
+	'game.levels.level2',
+
+	'game.levels.test',
 	'game.entities.switch',
 
 	'impact.game',
@@ -24,6 +27,8 @@ MyGame = ig.Game.extend({
 	font: new ig.Font( 'media/04b03.font.png' ),
 
 	gravity: 32,
+	levels: [LevelLevel1, LevelLevel2],
+	currLevel: 0,
 
 	isPlayerOne: true,
 	collisionMap_1: null,
@@ -34,7 +39,7 @@ MyGame = ig.Game.extend({
 
 		this.bindKeys();
 
-		this.loadLevel( LevelLevel1 );
+		this.loadLevel(this.levels[this.currLevel]);
 	},
 
 	loadLevel: function( data ) {
@@ -83,7 +88,14 @@ MyGame = ig.Game.extend({
 			this.entities[i].ready();
 		}
 	},
-
+	loadNextLevel: function() {
+		this.currLevel++;
+		if(this.levels[this.currLevel]) {
+			this.loadLevel(this.levels[this.currLevel]);
+		} else {
+			//Game end
+		}
+	},
 	getMapByName: function( name ) {
 		if( name == 'collision_1' ) {
 			return this.collisionMap_1;

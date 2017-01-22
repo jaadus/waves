@@ -10,8 +10,7 @@ EntityEndDoor = EntityNetBase.extend({
 	animSheet: new ig.AnimationSheet( 'media/end_door.png', 16, 24 ),
 	size: {x:16, y: 24},
 	gravityFactor: 0,
-
-	nextLevel: '',
+	name: "endDoor",
 
 	_wmIgnore: false,
 
@@ -23,6 +22,29 @@ EntityEndDoor = EntityNetBase.extend({
 
 	update: function() {
 		this.parent();
+	},
+	playerAtDoor: function(isPlayerOne) {
+		if(isPlayerOne) {
+			this.playerOneAtDoor = true;
+		} else {
+			this.playerTwoAtDoor = true;
+		}
+
+		if(this.playerOneAtDoor && this.playerTwoAtDoor) {
+			this._reset();
+			ig.game.loadNextLevel();
+		}
+	},
+	playerNotAtDoor: function(isPlayerOne) {
+		if(isPlayerOne) {
+			this.playerOneAtDoor = false;
+		} else {
+			this.playerTwoAtDoor = false;
+		}
+	},
+	_reset: function() {
+		this.playerNotAtDoor(true);
+		this.playerNotAtDoor(false);
 	}
 });
 
