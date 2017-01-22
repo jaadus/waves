@@ -9,7 +9,8 @@ ig.module(
 	'game.levels.waves',
 
 	'impact.game',
-	'impact.font'
+	'impact.font',
+	'plugins.door-fix' // ENGINE FIX :P
 )
 .defines(function(){
 
