@@ -10,6 +10,7 @@ ig.module(
 
 Title = ig.Game.extend({
 	font: new ig.Font( 'media/04b03.font.png' ),
+	logoImg: new ig.Image( 'media/logo.png' ),
 
 	init: function() {
 		this.keydownFunc = function( event ) {
@@ -28,7 +29,7 @@ Title = ig.Game.extend({
 
 	draw: function() {
 		this.parent();
-
+		this.logoImg.draw(30, 30);
 		this.font.draw('Press ANY Key to Play', ig.system.width / 2, ig.system.height * .75, ig.Font.ALIGN.CENTER);
 	}
 });
