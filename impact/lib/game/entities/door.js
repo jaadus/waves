@@ -11,7 +11,7 @@ EntityDoor = EntityNetBase.extend({
 	closeImg: new ig.Image( 'media/door_closed.png' ),
 	closed: true,
 	imageOffset: {x: -8, y: 0},
-	size: {x: 8, y:20},
+	size: {x: 16, y: 32},
 
 	_wmIgnore: false,
 

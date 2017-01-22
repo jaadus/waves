@@ -14,9 +14,9 @@ EntityPlayer = EntityNetBase.extend({
 	collides: ig.Entity.COLLIDES.ACTIVE,
 	speed: 80,
 	gravityFactor: 14,
-	jumpHeight: 160,
+	jumpHeight: 220,
 	jumpsound: null,
-	maxVel: {x: 200, y: 200},
+	maxVel: {x: 200, y: 400},
 	useDistance: 10,
 
 	isPlayerOne: true,
