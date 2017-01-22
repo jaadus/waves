@@ -57,7 +57,8 @@ EntityPlayer = EntityNetBase.extend({
 
 	draw: function() {
 		if( this.waveTimeLeft > 0 ) {
-			this.waveImg.draw( this.pos.x + this.waveOffset.x, this.pos.y + this.waveOffset.y );
+			this.waveImg.draw( this.pos.x + this.waveOffset.x - ig.game.screen.x,
+				this.pos.y + this.waveOffset.y - ig.game.screen.y);
 		}
 
 		this.parent();
@@ -101,7 +102,7 @@ EntityPlayer = EntityNetBase.extend({
 			this.addAnim( 'run', 0.125, [1,2,3,2], false );
 			this.jumpSound = new ig.Sound( 'media/sfx/Player2_Jump.*' );
 			this.waveSound = new ig.Sound( 'media/sfx/Player2_Wave.*' );
-			this.waveOffset = {x: 4, y: -10};
+			this.waveOffset = {x: 0, y: -18};
 			this.name = "P2";
 			this.dimension = 2;
 		}
