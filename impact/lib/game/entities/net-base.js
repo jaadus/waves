@@ -20,8 +20,6 @@ EntityNetBase = ig.Entity.extend({
 	},
 
 	update: function() {
-		this.parent();
-
 		if( this.syncRate > 0 && ig.net.isHost() ) {
 			this.timeToUpdate -= ig.system.tick;
 			if( this.timeToUpdate <= 0.0 ) {
@@ -30,6 +28,8 @@ EntityNetBase = ig.Entity.extend({
 				this.timeToUpdate = this.syncRate;
 			}
 		}
+
+		this.parent();
 	},
 
 	sendPacket: function(entmsg) {
