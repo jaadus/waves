@@ -29,12 +29,13 @@ EntityPlayer = EntityNetBase.extend({
 
 	facingRight: false,
 	remoteInputs: { left: false, right: false, up: false, down: false, jump: false },
-	waveTime: 1.0,
+	waveTime: 0.5,
 	waveTimeLeft: 0,
 	waveImg: new ig.Image( 'media/wave.png' ),
 	waveSound: null,
 	waveOffset: null,
-	waveHeight: 75,
+	waveHeight: 100,
+	angryWave: false,
 
 	landingSound: new ig.Sound( 'media/sfx/Player_Landing.*' ),
 	hardLandingVel: 150,
@@ -57,6 +58,10 @@ EntityPlayer = EntityNetBase.extend({
 		if( this.waveTimeLeft > 0.0 ) {
 			this.waveTimeLeft -= ig.system.tick;
 			this.waveTimeLeft = Math.max( this.waveTimeLeft, 0.0 );
+
+			if( this.waveTimeLeft == 0.0 ) {
+				this.angryWave = false;
+			}
 		}
 
 		if( this.isPlayerOne != ig.game.isPlayerOne ) {
@@ -106,6 +111,8 @@ EntityPlayer = EntityNetBase.extend({
 		if(this.isPlayerOne) {
 			this.addAnim( 'idle', 0, [0], true );
 			this.addAnim( 'run', 0.125, [1,2,3,4], false );
+			this.addAnim( 'wave', 0, [5], true );
+			this.addAnim( 'angry_wave', 0, [7], true );
 			this.jumpSound = new ig.Sound( 'media/sfx/Player1_Jump.*' );
 			this.waveSound = new ig.Sound( 'media/sfx/Player1_Wave.*' );
 			this.waveOffset = {x: 0, y: -12};
@@ -117,6 +124,8 @@ EntityPlayer = EntityNetBase.extend({
 			this.animSheet = new ig.AnimationSheet( 'media/player_2.png', 24, 24 );
 			this.addAnim( 'idle', 0, [0], true );
 			this.addAnim( 'run', 0.125, [1,2,3,2], false );
+			this.addAnim( 'wave', 0, [4], true );
+			this.addAnim( 'angry_wave', 0, [6], true );
 			this.jumpSound = new ig.Sound( 'media/sfx/Player2_Jump.*' );
 			this.waveSound = new ig.Sound( 'media/sfx/Player2_Wave.*' );
 			this.waveOffset = {x: 0, y: -18};
@@ -157,6 +166,11 @@ EntityPlayer = EntityNetBase.extend({
 			}
 			this.vel.x = 0;
 		}
+
+		if( this.waveTimeLeft > 0.0 && !this.standing ) {
+			this.currentAnim = (this.angryWave ? this.anims.angry_wave : this.anims.wave);
+		}
+
 		this.currentAnim.flip.x = !this.facingRight;
 
 		if( this.vel.y > this.hardLandingVel ) {
@@ -195,6 +209,10 @@ EntityPlayer = EntityNetBase.extend({
 		}
 
 		if( msg.type == 'wave' ) {
+			if( this.waveTimeLeft > 0 ) {
+				this.angryWave = true;
+			}
+
 			this.waveTimeLeft = this.waveTime;
 			this.waveSound.play();
 
