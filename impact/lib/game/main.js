@@ -14,6 +14,7 @@ ig.module(
 
 	'impact.game',
 	'impact.font',
+	'plugins.font2',
 	'plugins.dimensional-collision',
 	'plugins.door-fix', // ENGINE FIX :P
 
@@ -24,7 +25,6 @@ ig.module(
 MyGame = ig.Game.extend({
 
 	clearColor: '#6495ED',
-	font: new ig.Font( 'media/04b03.font.png' ),
 
 	gravity: 32,
 	levels: [LevelLevel1, LevelLevel2],

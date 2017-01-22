@@ -8,6 +8,8 @@ ig.module(
 .defines(function(){
 
 EntityPlayer = EntityNetBase.extend({
+	checkAgainst: ig.Entity.TYPE.B,
+
 	animSheet: new ig.AnimationSheet( 'media/player_1.png', 16, 16 ),
 	font: new ig.Font( 'media/04b03.font.png' ),
 	size: {x: 16, y: 16},
@@ -41,6 +43,12 @@ EntityPlayer = EntityNetBase.extend({
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
 		this._initAnimations();
+	},
+
+	check: function( other ) {
+		if( other.onOverlap instanceof Function ) {
+			other.onOverlap( this );
+		}
 	},
 
 	update: function() {
