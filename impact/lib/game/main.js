@@ -151,9 +151,10 @@ MyGame = ig.Game.extend({
 
 	draw: function() {
 		// Draw all entities and backgroundMaps
+		this.parent();
+
 		if(this.gameOver) {
 			this.victoryImg.draw(25, 20);
-
 			if(!this.playersCelebrating) {
 				this.playersCelebrating = true;
 				this.player.sendPacket({type: 'wave'});
@@ -165,8 +166,6 @@ MyGame = ig.Game.extend({
 				}.bind(this), interval);
 			}
 		}
-
-		this.parent();
 	},
 
 	getEntityById: function( id ) {
