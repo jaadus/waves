@@ -2,11 +2,11 @@ ig.module(
 	'game.entities.switch'
 )
 .requires(
-	'impact.entity'
+	'game.entities.net-base'
 )
 .defines(function(){
 
-EntitySwitch = ig.Entity.extend({
+EntitySwitch = EntityNetBase.extend({
 	//animSheet: new ig.AnimationSheet( 'media/doors.png', 16, 2 ),
 	animSheet: new ig.AnimationSheet( 'media/outdoors.png', 5, 5 ),
 	closed: true,
