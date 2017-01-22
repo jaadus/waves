@@ -1,24 +1,20 @@
 ig.module( 'game.levels.level2' )
-.requires( 'impact.image','game.entities.switch','game.entities.door','game.entities.player' )
+.requires( 'impact.image','game.entities.door','game.entities.switch','game.entities.player' )
 .defines(function(){
 LevelLevel2=/*JSON[*/{
 	"entities": [
 		{
-			"type": "EntitySwitch",
-			"x": 672,
-			"y": 564,
+			"type": "EntityDoor",
+			"x": 723,
+			"y": 656,
 			"settings": {
-				"dimension": 2,
-				"target": {
-					"P1B": "bottomP1B",
-					"P1D": "bottomP1D",
-					"P2B": "bottomP2B"
-				}
+				"dimension": 1,
+				"name": "bottomP1D"
 			}
 		},
 		{
 			"type": "EntityDoor",
-			"x": 112,
+			"x": 115,
 			"y": 160,
 			"settings": {
 				"name": "topA",
@@ -26,45 +22,17 @@ LevelLevel2=/*JSON[*/{
 			}
 		},
 		{
-			"type": "EntitySwitch",
-			"x": 152,
-			"y": 180,
+			"type": "EntityDoor",
+			"x": 195,
+			"y": 160,
 			"settings": {
-				"target": {
-					"A": "topA",
-					"D": "topD"
-				},
-				"dimension": 1
-			}
-		},
-		{
-			"type": "EntitySwitch",
-			"x": 328,
-			"y": 180,
-			"settings": {
-				"target": {
-					"A": "topA",
-					"C": "topC"
-				},
-				"dimension": 1
-			}
-		},
-		{
-			"type": "EntitySwitch",
-			"x": 244,
-			"y": 180,
-			"settings": {
-				"target": {
-					"A": "topA",
-					"B": "topB",
-					"C": "topC"
-				},
-				"dimension": 1
+				"name": "topB",
+				"dimension": 2
 			}
 		},
 		{
 			"type": "EntityDoor",
-			"x": 320,
+			"x": 323,
 			"y": 160,
 			"settings": {
 				"name": "topD",
@@ -73,79 +41,8 @@ LevelLevel2=/*JSON[*/{
 			}
 		},
 		{
-			"type": "EntitySwitch",
-			"x": 588,
-			"y": 564,
-			"settings": {
-				"dimension": 2,
-				"target": {
-					"P1A": "bottomP1A",
-					"P1C": "bottomP1C",
-					"P1D": "bottomP1D"
-				}
-			}
-		},
-		{
-			"type": "EntityPlayer",
-			"x": 24,
-			"y": 176,
-			"settings": {
-				"isPlayerOne": 0
-			}
-		},
-		{
 			"type": "EntityDoor",
-			"x": 192,
-			"y": 160,
-			"settings": {
-				"name": "topB",
-				"dimension": 2
-			}
-		},
-		{
-			"type": "EntitySwitch",
-			"x": 516,
-			"y": 596,
-			"settings": {
-				"dimension": 2,
-				"target": {
-					"P2A": "bottomP2A",
-					"P1gate": "bottomP1gate"
-				}
-			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 256,
-			"y": 160,
-			"settings": {
-				"name": "topC",
-				"dimension": 2
-			}
-		},
-		{
-			"type": "EntitySwitch",
-			"x": 364,
-			"y": 180,
-			"settings": {
-				"dimension": 2,
-				"target": {
-					"gate": "P1gate",
-					"P2gate": "P2gate"
-				}
-			}
-		},
-		{
-			"type": "EntityPlayer",
-			"x": 56,
-			"y": 176,
-			"settings": {
-				"isPlayerOne": 1
-			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 384,
+			"x": 387,
 			"y": 160,
 			"settings": {
 				"name": "P1gate",
@@ -153,15 +50,12 @@ LevelLevel2=/*JSON[*/{
 			}
 		},
 		{
-			"type": "EntitySwitch",
-			"x": 748,
-			"y": 596,
+			"type": "EntityDoor",
+			"x": 259,
+			"y": 160,
 			"settings": {
-				"dimension": 2,
-				"target": {
-					"P1D": "bottomP1D",
-					"P2C": "bottomP2C"
-				}
+				"name": "topC",
+				"dimension": 2
 			}
 		},
 		{
@@ -214,6 +108,15 @@ LevelLevel2=/*JSON[*/{
 		},
 		{
 			"type": "EntityDoor",
+			"x": 563,
+			"y": 656,
+			"settings": {
+				"dimension": 1,
+				"name": "bottomP1B"
+			}
+		},
+		{
+			"type": "EntityDoor",
 			"x": 484,
 			"y": 656,
 			"settings": {
@@ -223,16 +126,7 @@ LevelLevel2=/*JSON[*/{
 		},
 		{
 			"type": "EntityDoor",
-			"x": 560,
-			"y": 656,
-			"settings": {
-				"dimension": 1,
-				"name": "bottomP1B"
-			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 640,
+			"x": 643,
 			"y": 656,
 			"settings": {
 				"dimension": 1,
@@ -242,11 +136,118 @@ LevelLevel2=/*JSON[*/{
 		},
 		{
 			"type": "EntityDoor",
-			"x": 720,
-			"y": 656,
+			"x": 387,
+			"y": 160,
 			"settings": {
-				"dimension": 1,
-				"name": "bottomP1D"
+				"name": "P2gate",
+				"dimension": 2
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 328,
+			"y": 176,
+			"settings": {
+				"target": {
+					"A": "topA",
+					"C": "topC"
+				},
+				"dimension": 1
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 668,
+			"y": 560,
+			"settings": {
+				"dimension": 2,
+				"target": {
+					"P1B": "bottomP1B",
+					"P1D": "bottomP1D",
+					"P2B": "bottomP2B"
+				}
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 588,
+			"y": 560,
+			"settings": {
+				"dimension": 2,
+				"target": {
+					"P1A": "bottomP1A",
+					"P1C": "bottomP1C",
+					"P1D": "bottomP1D"
+				}
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 152,
+			"y": 176,
+			"settings": {
+				"target": {
+					"A": "topA",
+					"D": "topD"
+				},
+				"dimension": 1
+			}
+		},
+		{
+			"type": "EntityPlayer",
+			"x": 24,
+			"y": 176,
+			"settings": {
+				"isPlayerOne": 0
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 364,
+			"y": 176,
+			"settings": {
+				"dimension": 2,
+				"target": {
+					"gate": "P1gate",
+					"P2gate": "P2gate"
+				}
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 244,
+			"y": 176,
+			"settings": {
+				"target": {
+					"A": "topA",
+					"B": "topB",
+					"C": "topC"
+				},
+				"dimension": 1
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 516,
+			"y": 592,
+			"settings": {
+				"dimension": 2,
+				"target": {
+					"P2A": "bottomP2A",
+					"P1gate": "bottomP1gate"
+				}
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 748,
+			"y": 592,
+			"settings": {
+				"dimension": 2,
+				"target": {
+					"P1D": "bottomP1D",
+					"P2C": "bottomP2C"
+				}
 			}
 		},
 		{
@@ -262,12 +263,11 @@ LevelLevel2=/*JSON[*/{
 			}
 		},
 		{
-			"type": "EntityDoor",
-			"x": 384,
-			"y": 160,
+			"type": "EntityPlayer",
+			"x": 56,
+			"y": 176,
 			"settings": {
-				"name": "P2gate",
-				"dimension": 2
+				"isPlayerOne": 1
 			}
 		}
 	],
@@ -280,7 +280,7 @@ LevelLevel2=/*JSON[*/{
 			"linkWithCollision_2": false,
 			"visibleToPlayerOne": true,
 			"visibleToPlayerTwo": false,
-			"visible": 0,
+			"visible": 1,
 			"tilesetName": "media/outdoors.png",
 			"repeat": false,
 			"preRender": false,
@@ -466,7 +466,7 @@ LevelLevel2=/*JSON[*/{
 			"linkWithCollision_2": true,
 			"visibleToPlayerOne": false,
 			"visibleToPlayerTwo": true,
-			"visible": 1,
+			"visible": 0,
 			"tilesetName": "media/outdoors.png",
 			"repeat": false,
 			"preRender": false,

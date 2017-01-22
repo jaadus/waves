@@ -11,7 +11,7 @@ EntityDustParticle = ig.Entity.extend({
 	gravityFactor: 0,
 
 	init: function( x, y, settings ) {
-		this.addAnim( 'puff', .125, [0,1,2,3,4], true );
+		this.addAnim( 'puff', .075, [0,1,2,3,4], true );
 
 		this.parent( x, y, settings );
 	},
