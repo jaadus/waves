@@ -111,7 +111,8 @@ MyGame = ig.Game.extend({
 		this.parent();
 
 		// Add your own, additional update code here
-		var player = this.getEntitiesByType(EntityPlayer)[0];
+		var playerNumber = this.isPlayerOne ? 1 : 2;
+		var player = this.getEntityByName('P'+playerNumber);
 		if (player) {
 			this.screen.x = player.pos.x - ig.system.width / 2;
 			this.screen.y = player.pos.y - ig.system.height / 2;
