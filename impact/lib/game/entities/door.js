@@ -38,9 +38,17 @@ EntityDoor = EntityNetBase.extend({
 				return;
 		}
 
-		var img = this.closed ? this.closeImg : this.openImg;
+		var offsetX = this.imageOffset.x;
+		var img;
 
-		img.draw(this.pos.x + this.imageOffset.x - ig.game.screen.x,
+		if(this.closed) {
+			img = this.closeImg;
+		} else {
+			img = this.openImg;
+			offsetX = this.imageOffset.x + img.width/2 + 5;
+		}
+
+		img.draw(this.pos.x + offsetX - ig.game.screen.x,
 			this.pos.y + this.imageOffset.y - ig.game.screen.y);
 
 		this.parent();
