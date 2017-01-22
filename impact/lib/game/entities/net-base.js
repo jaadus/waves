@@ -39,7 +39,7 @@ EntityNetBase = ig.Entity.extend({
 		// movement & collision
 		var mx = this.vel.x * ig.system.tick;
 		var my = this.vel.y * ig.system.tick;
-		var collMap = ((this.dimension & 1) == 0 ? ig.game.collisionMap_1 : ig.game.collisionMap_2);
+		var collMap = ((this.dimension & 1) != 0 ? ig.game.collisionMap_1 : ig.game.collisionMap_2);
 		var res = collMap.trace(this.pos.x, this.pos.y, mx, my, this.size.x, this.size.y);
 		this.handleMovementTrace( res );
 
