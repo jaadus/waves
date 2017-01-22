@@ -1,23 +1,22 @@
 ig.module( 'game.levels.level1' )
-.requires( 'impact.image','game.entities.door','game.entities.player','game.entities.switch' )
+.requires( 'impact.image','game.entities.door','game.entities.player','game.entities.switch','game.entities.end-door' )
 .defines(function(){
 LevelLevel1=/*JSON[*/{
 	"entities": [
 		{
 			"type": "EntityDoor",
-			"x": 576,
-			"y": 1152,
+			"x": 384,
+			"y": 960,
 			"settings": {
-				"dimension": 2,
-				"name": "b2"
+				"dimension": 1
 			}
 		},
 		{
-			"type": "EntityDoor",
-			"x": 576,
-			"y": 960,
+			"type": "EntityPlayer",
+			"x": 28,
+			"y": 1164,
 			"settings": {
-				"dimension": 2
+				"isPlayerOne": 1
 			}
 		},
 		{
@@ -50,9 +49,26 @@ LevelLevel1=/*JSON[*/{
 		{
 			"type": "EntityDoor",
 			"x": 576,
+			"y": 960,
+			"settings": {
+				"dimension": 2
+			}
+		},
+		{
+			"type": "EntityDoor",
+			"x": 576,
 			"y": 1056,
 			"settings": {
 				"dimension": 2
+			}
+		},
+		{
+			"type": "EntityDoor",
+			"x": 576,
+			"y": 1152,
+			"settings": {
+				"dimension": 2,
+				"name": "b2"
 			}
 		},
 		{
@@ -70,22 +86,6 @@ LevelLevel1=/*JSON[*/{
 			"settings": {
 				"dimension": 1,
 				"name": "B3"
-			}
-		},
-		{
-			"type": "EntityDoor",
-			"x": 384,
-			"y": 960,
-			"settings": {
-				"dimension": 1
-			}
-		},
-		{
-			"type": "EntityPlayer",
-			"x": 28,
-			"y": 1164,
-			"settings": {
-				"isPlayerOne": 1
 			}
 		},
 		{
@@ -184,6 +184,11 @@ LevelLevel1=/*JSON[*/{
 					"C": "C"
 				}
 			}
+		},
+		{
+			"type": "EntityEndDoor",
+			"x": 520,
+			"y": 1160
 		}
 	],
 	"layer": [

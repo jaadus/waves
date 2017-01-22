@@ -11,6 +11,7 @@ EntityEndDoor = EntityNetBase.extend({
 	size: {x:16, y: 24},
 	gravityFactor: 0,
 	name: "endDoor",
+	zIndex: -32,
 
 	_wmIgnore: false,
 
