@@ -152,20 +152,22 @@ MyGame = ig.Game.extend({
 
 	draw: function() {
 		// Draw all entities and backgroundMaps
-		this.parent();
-
 		if(this.gameOver) {
 			this.victoryImg.draw(25, 20);
-			//Do we want this?
-			/*if(!this.playersCelebrating) {
+
+			if(!this.playersCelebrating) {
 				this.playersCelebrating = true;
 				this.player.sendPacket({type: 'wave'});
-				var interval = 2000;
+				var interval = 2500;
+				this.waveSound = new ig.Sound( 'media/sfx/Jingle_Achievement_00.*' );
+				this.waveSound.play();
 				setInterval(function() {
 					this.player.sendPacket({type: 'wave'});
 				}.bind(this), interval);
-			}*/
+			}
 		}
+
+		this.parent();
 	},
 
 	getEntityById: function( id ) {
