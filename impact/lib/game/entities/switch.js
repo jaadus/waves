@@ -11,20 +11,28 @@ EntitySwitch = ig.Entity.extend({
 	animSheet: new ig.AnimationSheet( 'media/outdoors.png', 5, 5 ),
 	closed: true,
 	size: {x: 5, y: 5},
-	targets: [],
+	targetNames: [],
+	gravityFactor: 0,
 	on: false,
 
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
+		this._populateTargetDoorNames(settings.targets);
 		this.addAnim( 'open', 0.125, [1], false );
 	},
 	update: function() {
 		this.size.x = this.on ? 2 : 5;
 		this.parent();
 	},
+	_populateTargetDoorNames: function(targets) {
+		if(!targets) return;
+		for (var targetKey in targets) {
+		    this.targetNames.push(targets[targetKey]);
+		}
+	},
 	toggle: function() {
 		this.on = !this.on;
-		this.targets.forEach(function(name) {
+		this.targetNames.forEach(function(name) {
 			ig.game.getEntityByName(name).toggle();
 		});
 	}
