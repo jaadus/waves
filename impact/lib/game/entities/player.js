@@ -45,6 +45,7 @@ EntityPlayer = EntityNetBase.extend({
 	makeLandingSound: false,
 
 	prevAnimFrame: -1,
+	startPos: {x: 0, y: 0},
 
 	init: function( x, y, settings ) {
 		this.parent( x, y, settings );
@@ -52,6 +53,9 @@ EntityPlayer = EntityNetBase.extend({
 
 		this.footstepSound_1 = new ig.Sound( this.isPlayerOne ? 'media/sfx/Player1_Step1.*' : 'media/sfx/Player2_Step1.*' );
 		this.footstepSound_2 = new ig.Sound( this.isPlayerOne ? 'media/sfx/Player1_Step2.*' : 'media/sfx/Player2_Step2.*' );
+
+		this.startPos.x = x;
+		this.startPos.y = y;
 	},
 
 	check: function( other ) {
@@ -62,6 +66,11 @@ EntityPlayer = EntityNetBase.extend({
 
 	update: function() {
 		this._handleMoveLogic();
+
+		if( this.pos.y > 750 ) {
+			this.pos.x = this.startPos.x;
+			this.pos.y = this.startPos.y;
+		}
 
 		if( this.waveTimeLeft > 0.0 ) {
 			this.waveTimeLeft -= ig.system.tick;
