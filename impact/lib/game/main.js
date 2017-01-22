@@ -6,7 +6,7 @@ ig.module(
 	'game.util',
 	'game.v2',
 
-	'game.levels.test',
+	'game.levels.waves',
 
 	'impact.game',
 	'impact.font'
@@ -26,7 +26,7 @@ MyGame = ig.Game.extend({
 		// Initialize your game here; bind keys etc.
 		this.bindKeys();
 
-		this.loadLevel( LevelTest );
+		this.loadLevel( LevelWaves );
 
 		this.isPlayerOne = ig.net.isHost();
 	},
@@ -81,6 +81,7 @@ MyGame = ig.Game.extend({
 	bindKeys: function() {
 		ig.input.bind( ig.KEY.UP_ARROW, 'jump' );
 		ig.input.bind( ig.KEY.SPACE, 'jump' );
+		//ig.input.bind( ig.KEY.SPACE, 'openDoor' );
 		ig.input.bind( ig.KEY.RIGHT_ARROW, 'moveRight');
 		ig.input.bind( ig.KEY.LEFT_ARROW, 'moveLeft');
 		ig.input.bind( ig.KEY.W, 'jump' );
@@ -94,6 +95,11 @@ MyGame = ig.Game.extend({
 		this.parent();
 
 		// Add your own, additional update code here
+		var player = this.getEntitiesByType(EntityPlayer)[0];
+		if (player) {
+			this.screen.x = player.pos.x - ig.system.width / 2;
+			this.screen.y = player.pos.y - ig.system.height / 2;
+		}
 	},
 
 	draw: function() {

@@ -1,5 +1,5 @@
 ig.module( 'game.levels.test' )
-.requires( 'impact.image','game.entities.player' )
+.requires( 'impact.image','game.entities.player','game.entities.door','game.entities.switch' )
 .defines(function(){
 LevelTest=/*JSON[*/{
 	"entities": [
@@ -8,17 +8,38 @@ LevelTest=/*JSON[*/{
 			"x": 104,
 			"y": 188,
 			"settings": {
-				"isPlayerOne":true
+				"isPlayerOne": true
 			}
 		},
 		{
 			"type": "EntityPlayer",
-			"x": 184,
+			"x": 224,
+			"y": 176,
+			"settings": {
+				"isPlayerOne": false,
+				"size": {
+					"x": 32,
+					"y": 32
+				}
+			}
+		},
+		{
+			"type": "EntityDoor",
+			"x": 190,
+			"y": 188,
+			"name": "door1",
+			"settings": {
+				"closed": true
+			}
+		},
+		{
+			"type": "EntitySwitch",
+			"x": 286,
 			"y": 188,
 			"settings": {
-				"isPlayerOne":false,
-				"size": {"x": 32, "y": 32}
-			}
+				"on": false
+			},
+			"targets": ["door1"]
 		}
 	],
 	"layer": [
