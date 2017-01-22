@@ -7,57 +7,40 @@ ig.module(
 .defines(function(){
 
 EntityDoor = EntityNetBase.extend({
-	openImg: new ig.Image( 'media/door_open.png' ),
-	closeImg: new ig.Image( 'media/door_closed.png' ),
-	closed: true,
-	imageOffset: {x: -8, y: 0},
-	size: {x: 16, y: 32},
+	animSheet: new ig.AnimationSheet( 'media/door.png', 16, 32 ),
 
+	closed: true,
+	imageOffset: {x: -7, y: 0},
+	size: {x: 8, y: 32},
+
+	gravityFactor: 0,
 	_wmIgnore: false,
 
 	init: function( x, y, settings ) {
+		this.addAnim( 'opening', 0.025, [0,1,2,3,4,5], true );
+		this.addAnim( 'closing', 0.025, [5,4,3,2,1,0], true );
+
 		this.parent( x, y, settings );
-		this.closeImg.height = this.openImg.height = 24;
-		this.gravityFactor = 0;
+
+		this.collides = (this.closed ? ig.Entity.COLLIDES.FIXED : ig.Entity.COLLIDES.NEVER);
+
+		this.currentAnim = (this.closed ? this.anims.closing : this.anims.opening);
+		this.currentAnim.gotoFrame( 5 );
 	},
+
 	update: function() {
-		this.currentAnim = this.anims.close;
-		this.collides = this.closed ? ig.Entity.COLLIDES.FIXED : ig.Entity.COLLIDES.NEVER;
 		this.parent();
 	},
-	open: function() {
-		this.closed = false;
-	},
-	close: function() {
-		this.closed = true;
-	},
-	draw: function() {
 
-		if((ig.game.isPlayerOne && this.dimension == 2)
-			|| (!ig.game.isPlayerOne && this.dimension == 1)) {
-				return;
-		}
-
-		var offsetX = this.imageOffset.x;
-		var img;
-
-		if(this.closed) {
-			img = this.closeImg;
-		} else {
-			img = this.openImg;
-			offsetX = this.imageOffset.x + img.width/2 + 5;
-		}
-
-		img.draw(this.pos.x + offsetX - ig.game.screen.x,
-			this.pos.y + this.imageOffset.y - ig.game.screen.y);
-
-		this.parent();
-	},
 	toggle: function() {
 		this.sendPacket({type: 'toggle'});
 	},
+
 	processPacket: function(msg) {
 		this.closed = !this.closed;
+		this.collides = (this.closed ? ig.Entity.COLLIDES.FIXED : ig.Entity.COLLIDES.NEVER);
+		this.currentAnim = (this.closed ? this.anims.closing : this.anims.opening);
+		this.currentAnim.rewind();
 		this.parent(msg);
 	}
 });
