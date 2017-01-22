@@ -7,6 +7,7 @@ ig.module(
 	'game.v2',
 
 	'game.levels.waves',
+	'game.entities.switch',
 
 	'impact.game',
 	'impact.font',
@@ -44,6 +45,7 @@ MyGame = ig.Game.extend({
 			var ent = data.entities[i];
 			this.spawnEntity( ent.type, ent.x, ent.y, ent.settings );
 		}
+
 		this.sortEntities();
 
 		// Map Layer
@@ -81,10 +83,21 @@ MyGame = ig.Game.extend({
 		}
 	},
 
+	sortEntities: function() {
+		this.aSwitches = this.entities.filter(function(el) {
+			return el instanceof EntitySwitch && el.dimension == 1;
+		}, this);
+		this.bSwitches = this.entities.filter(function(el) {
+			return el instanceof EntitySwitch && el.dimension == 2;
+		}, this);
+
+		this.parent();
+	},
+
 	bindKeys: function() {
 		ig.input.bind( ig.KEY.UP_ARROW, 'jump' );
 		ig.input.bind( ig.KEY.SPACE, 'jump' );
-		//ig.input.bind( ig.KEY.SPACE, 'openDoor' );
+		ig.input.bind( ig.KEY.E, 'use');
 		ig.input.bind( ig.KEY.RIGHT_ARROW, 'moveRight');
 		ig.input.bind( ig.KEY.LEFT_ARROW, 'moveLeft');
 		ig.input.bind( ig.KEY.W, 'jump' );

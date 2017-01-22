@@ -16,6 +16,7 @@ EntityPlayer = EntityNetBase.extend({
 	jumpHeight: 150,
 	jumpsound: null,
 	maxVel: {x: 200, y: 200},
+	useDistance: 10,
 
 	isPlayerOne: true,
 
@@ -83,6 +84,10 @@ EntityPlayer = EntityNetBase.extend({
 		if( ig.input.pressed('wave') ) {
 			this.sendPacket({type: 'wave'});
 		}
+		if( ig.input.pressed('use') ) {
+			this._handleUse();
+			this.sendPacket({type: 'use'});
+		}
 	},
 
 	_initAnimations: function() {
@@ -133,7 +138,21 @@ EntityPlayer = EntityNetBase.extend({
 		}
 		this.currentAnim.flip.x = !this.facingRight;
 	},
-
+	_handleUse: function() {
+		var theSwitch = this._getClosestSwitch();
+		if(theSwitch) {
+			console.log('togglin')
+			theSwitch.toggle();
+		}
+	},
+	_getClosestSwitch: function() {
+		var switches = this.isPlayerOne ? ig.game.aSwitches : ig.game.bSwitches;
+		for(var idx in switches) {
+			if(this.distanceTo(switches[idx]) < this.useDistance) {
+				return switches[idx];
+			}
+		}
+	},
 	processPacket: function(msg) {
 		if( msg.type == 'key' ) {
 			var remoteKeys = Object.keys( this.remoteInputs );
