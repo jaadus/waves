@@ -10,7 +10,6 @@ EntityDoor = EntityNetBase.extend({
 	animSheet: new ig.AnimationSheet( 'media/door.png', 16, 32 ),
 
 	closed: true,
-	imageOffset: {x: -7, y: 0},
 	size: {x: 8, y: 32},
 
 	zIndex: -16,

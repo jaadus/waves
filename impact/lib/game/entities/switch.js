@@ -31,6 +31,8 @@ EntitySwitch = EntityNetBase.extend({
 		this.addAnim( 'on', 0.125, [0], true );
 		this.addAnim( 'neutral', 0.125, [1], true );
 		this.addAnim( 'off', 0.125, [2], true );
+
+		this.currentAnim = (this.on ? this.anims.on : this.anims.off);
 	},
 
 	update: function() {
